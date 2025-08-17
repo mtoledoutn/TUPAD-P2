@@ -9,20 +9,28 @@ import java.util.Scanner;
  * @author met
  */
 public class Ejercicio8 {
-     public static void main(String[] args) {
+    public static double calcularPrecioFinal(double precioBase, double impuesto, double descuento) {
+        double impuestoDecimal = impuesto / 100;
+        double descuentoDecimal = descuento / 100;
+
+        double precioFinal = precioBase + (precioBase * impuestoDecimal) - (precioBase * descuentoDecimal);
+        return precioFinal;
+    }
+
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int nota;
 
-        do {
-            System.out.print("Ingrese una nota (0-10): ");
-            nota = scanner.nextInt();
+        System.out.print("Ingrese el precio base del producto: ");
+        double precioBase = scanner.nextDouble();
 
-            if (nota < 0 || nota > 10) {
-                System.out.println("Error: Nota inválida. Ingrese una nota entre 0 y 10.");
-            }
+        System.out.print("Ingrese el impuesto en porcentaje: ");
+        double impuesto = scanner.nextDouble();
 
-        } while (nota < 0 || nota > 10);
+        System.out.print("Ingrese el descuento en porcentaje: ");
+        double descuento = scanner.nextDouble();
 
-        System.out.println("Nota guardada correctamente: " + nota);
+        double precioFinal = calcularPrecioFinal(precioBase, impuesto, descuento);
+
+        System.out.println("El precio final del producto es: " + precioFinal);
     }
 }
